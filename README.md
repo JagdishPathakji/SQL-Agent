@@ -120,4 +120,4 @@ When connecting a custom production database (e.g., PostgreSQL), you can paste a
   }
 }
 ```
-Providing these overrides prevents column name ambiguities (e.g., separating university admission dates from individual class registration enrollment dates) and guarantees high-fidelity SQL queries.
+Providing these overrides prevents column name ambiguities and guarantees high-fidelity SQL queries.
