@@ -164,5 +164,9 @@ SEMANTIC_COLUMN_DESCRIPTIONS = {
     "hostel_allotments.room_number": "dorm room number allocation",
     "tuition_fees.amount": "charged tuition and fee rates",
     "scholarships.amount_percent": "discount rate applied to tuition",
-    "assets.purchase_cost": "property asset value / hardware equipment cost"
+    "assets.purchase_cost": "property asset value / hardware equipment cost",
+    "students.enrollment_date": "The date when the student first enrolled/admitted to the university",
+    "students.status": "The general university enrollment status of the student (Active, Suspended, Graduated)",
+    "enrollments.enrollment_date": "The date when the student registered/enrolled in a specific course section class",
+    "enrollments.status": "The registration status of a student in a specific course section class (Completed, Active)"
 }

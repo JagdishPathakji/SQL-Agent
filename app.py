@@ -677,6 +677,7 @@ if user_query:
             with st.expander("🛠️ Executed SQL Query", expanded=False):
                 st.code(sql, language="sql")
                 
+        chart_rec = None
         # Output Data Table
         if is_db_query and df is not None:
             if not df.empty:
