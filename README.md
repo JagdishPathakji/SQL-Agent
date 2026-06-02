@@ -1,5 +1,7 @@
 # ⚡ Enterprise SQL Agent
 
+👉 **Live Demo:** [prompt-sql.streamlit.app](https://prompt-sql.streamlit.app/)
+
 An intelligent, self-healing natural language query agent powered by **LangGraph** and **Streamlit**. Talk directly to operational databases in plain English, scale queries up to hundreds of tables with dynamic schema pruning, visualize insights automatically, and run database queries with strict data privacy guards.
 
 ---
