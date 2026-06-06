@@ -112,8 +112,25 @@ def intent_classifier_node(state: AgentState) -> Dict[str, Any]:
     # ==========================================
     # 3. STRUCTURED OUTPUT PARSING & FALLBACK
     # ==========================================
+    if llm_output.startswith("ERROR:"):
+        return {
+            "intent": "out_of_scope",
+            "confidence": 0.0,
+            "requires_clarification": False,
+            "clarification_message": "",
+            "compiled_natural_insight": llm_output,
+            "steps_log": steps + [f"LLM Error encountered: {llm_output}"]
+        }
+
     try:
-        clean_json = re.sub(r"```[a-zA-Z]*", "", llm_output).strip()
+        # Robust JSON extraction: locate first '{' and last '}'
+        start_idx = llm_output.find('{')
+        end_idx = llm_output.rfind('}')
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            clean_json = llm_output[start_idx:end_idx+1].strip()
+        else:
+            clean_json = re.sub(r"```[a-zA-Z]*", "", llm_output).strip()
+            
         data = json.loads(clean_json)
         # Parse and validate with Pydantic model
         classification = IntentClassification(**data)

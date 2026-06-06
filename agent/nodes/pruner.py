@@ -94,7 +94,14 @@ selection_reason:
     pruning_reason = "No reasoning provided."
     needs_clarification = False
     try:
-        clean_json = re.sub(r"```[a-zA-Z]*", "", llm_output).strip()
+        # Robust JSON extraction: locate first '{' and last '}'
+        start_idx = llm_output.find('{')
+        end_idx = llm_output.rfind('}')
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            clean_json = llm_output[start_idx:end_idx+1].strip()
+        else:
+            clean_json = re.sub(r"```[a-zA-Z]*", "", llm_output).strip()
+            
         data = json.loads(clean_json)
         selected_tables = data.get("tables", [])
         pruning_reason = data.get("selection_reason", "Selected tables based on schema matching.")
