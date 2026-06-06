@@ -445,7 +445,7 @@ with st.sidebar.expander("🧠 LLM Brain Credentials", expanded=True):
     else:
         default_key = os.getenv(f"{llm_provider.upper()}_API_KEY", "")
         if llm_provider == "Groq" and not default_key:
-            default_key = "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"
+            default_key = "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"
         api_key = st.text_input(
             f"{llm_provider} API Key",
             type="password",
